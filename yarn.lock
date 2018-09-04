@@ -9031,6 +9031,12 @@ webpack-merge@^4.1.3:
   dependencies:
     lodash "^4.17.5"
 
+webpack-remove-blocks@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/webpack-remove-blocks/-/webpack-remove-blocks-1.1.0.tgz#5bd446222d82ad7f5d1dc4aa879eed9c29e3779e"
+  dependencies:
+    loader-utils "^1.1.0"
+
 webpack-sources@^1.0.1, webpack-sources@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-1.2.0.tgz#18181e0d013fce096faf6f8e6d41eeffffdceac2"
