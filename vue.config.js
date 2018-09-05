@@ -3,12 +3,11 @@ module.exports = {
 		open: process.platform == 'win32' ? 'chrome' : 'google chrome'
 	},
 	chainWebpack: config => {
-		// config.resolve.alias
-        //     .set('@', resolve('src'))
-        //     .set('@assets',resolve('src/assets'))
-        //     .set('@components',resolve('src/components'))
-        //     .set('@views',resolve('src/views'))
-        //     .set('@images',resolve('src/images'))
+		config.resolve.alias
+            .set('@assets', 'src/assets')
+            .set('@components', 'src/components')
+            .set('@views', 'src/views')
+            .set('@images', 'src/images')
 		if (process.env.NODE_ENV === 'production') {
 			// 为生产环境修改配置...
 			config.module
