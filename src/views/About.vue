@@ -15,7 +15,8 @@
 	</div>
 </template>
 <script>
-import {fetchPost} from  '@/components/axios';
+import { fetchPost } from '@/components/Fetch';
+
 export default {
 	data() {
 		return {
@@ -30,19 +31,18 @@ export default {
 	methods: {
 		submit() {
 			this.$refs.form.validate().then((result) => {
-				let data={};
+				const data = {};
 				data.phone = this.validateForm.phValue;
 				data.password = this.validateForm.pawValue;
 				data.Platform = 5;
-				data.Version_Code = "2.0";
-				fetchPost('api/user/login',data)
-				.then(function(response){
-					console.log(response);
-				})
-				.catch(function(error){
+				data.Version_Code = '2.0';
+				fetchPost('api/user/login', data)
+					.then((response) => {
+						console.log(response);
+					})
+					.catch((error) => {
 					// console.log(error);
-				});
-
+					});
 			});
 		},
 	},
