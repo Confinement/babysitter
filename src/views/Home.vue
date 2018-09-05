@@ -1,8 +1,13 @@
 <template>
-	<div class="home">
-		<img alt="Vue logo" src="../assets/logo.png">
-		<HelloWorld msg="Welcome to Your Vue.js App" />
-	</div>
+	<!-- <mu-container> -->
+		<mu-bottom-nav class="appbar" >
+			<mu-bottom-nav-item title="home" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='home'}" :titleClass="{text_selected:this.bottomIndex=='home'}" to="/about"></mu-bottom-nav-item>
+			<mu-bottom-nav-item title="jaundice" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='jaundice'}" :titleClass="{text_selected:this.bottomIndex=='jaundice'}" to="/about"></mu-bottom-nav-item>
+			<mu-bottom-nav-item title="BBS" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='BBS'}" :titleClass="{text_selected:this.bottomIndex=='BBS'}" to="/about" ></mu-bottom-nav-item>
+			<mu-bottom-nav-item title="Learning" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='Learning'}" :titleClass="{text_selected:this.bottomIndex=='Learning'}" to="/about"></mu-bottom-nav-item>
+			<mu-bottom-nav-item title="my" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='my'}" :titleClass="{text_selected:this.bottomIndex=='my'}" to="/about"></mu-bottom-nav-item>
+		</mu-bottom-nav>
+	<!-- </mu-container> -->
 </template>
 
 <script>
@@ -10,9 +15,92 @@
 import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
+	props:['bottomIndex'],
 	name: 'home',
-	components: {
-		HelloWorld,
-	},
+	data () {
+		return {
+			bottomValue:this.bottomIndex,
+		};
+  }
 };
 </script>
+<style lang="less">
+.appbar {
+  position: absolute;
+//   width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+a:nth-child(1) .mu-bottom-item-icon.selected{
+  background-image: url(../assets/home/nav_home1.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+  a:nth-child(1) .mu-bottom-item-icon{
+  background-image: url(../assets/home/nav_home.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+  a:nth-child(2) .mu-bottom-item-icon.selected{
+  background-image: url(../assets/home/nav_huandan.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+  a:nth-child(2) .mu-bottom-item-icon{
+  background-image: url(../assets/home/nav_huandan.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+  a:nth-child(3) .mu-bottom-item-icon.selected{
+  background-image: url(../assets/home/nav_circle1.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+  a:nth-child(3) .mu-bottom-item-icon{
+  background-image: url(../assets/home/nav_circle.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+  a:nth-child(4) .mu-bottom-item-icon.selected{
+  background-image: url(../assets/home/nav_school1.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+  a:nth-child(4) .mu-bottom-item-icon{
+  background-image: url(../assets/home/nav_school.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+  a:nth-child(5) .mu-bottom-item-icon.selected{
+  background-image: url(../assets/home/nav_me1.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+  a:nth-child(5) .mu-bottom-item-icon{
+  background-image: url(../assets/home/nav_me.png) ;
+  background-repeat:no-repeat;
+  width:21px;
+  height:21px;
+  background-size:100% 100%;
+  }
+ 
+</style>

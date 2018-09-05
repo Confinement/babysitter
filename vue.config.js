@@ -18,34 +18,34 @@ module.exports = {
 				.test(/\.vue$/)
 				.pre()
 				.use('webpack-remove-blocks')
-					.loader('webpack-remove-blocks')
-					.options({
-						blocks: [{
-							block: 'debug',
-							start: '<!--',
-							end: '-->'
-						}, 'debug', {
-                            block: 'debug',
-                            start: '//'
-                        }]
-					})
-				.end()
+				.loader('webpack-remove-blocks')
+				.options({
+					blocks: [{
+						block: 'debug',
+						start: '<!--',
+						end: '-->',
+					}, 'debug', {
+						block: 'debug',
+						start: '//',
+					}],
+				})
+				.end();
 			config.module
 				.rule('production-remove-js')
 				.test(/\.js$/)
 				.pre()
 				.exclude
-					.add(/(node_modules|bower_components|\.spec\.js)/)
-					.end()
-				.use('webpack-remove-blocks')
-					.loader('webpack-remove-blocks')
-					.options({
-						blocks: ['debug', {
-                            block: 'debug',
-                            start: '//'
-                        }]
-					})
+				.add(/(node_modules|bower_components|\.spec\.js)/)
 				.end()
+				.use('webpack-remove-blocks')
+				.loader('webpack-remove-blocks')
+				.options({
+					blocks: ['debug', {
+						block: 'debug',
+						start: '//',
+					}],
+				})
+				.end();
 		} else {
 			// 为开发环境修改配置...
 			config.module
@@ -53,34 +53,34 @@ module.exports = {
 				.test(/\.vue$/)
 				.pre()
 				.use('webpack-remove-blocks')
-					.loader('webpack-remove-blocks')
-					.options({
-						blocks: [{
-							block: 'build',
-							start: '<!--',
-							end: '-->'
-						}, 'build', {
-                            block: 'build',
-                            start: '//'
-                        }]
-					})
-				.end()
+				.loader('webpack-remove-blocks')
+				.options({
+					blocks: [{
+						block: 'build',
+						start: '<!--',
+						end: '-->',
+					}, 'build', {
+						block: 'build',
+						start: '//',
+					}],
+				})
+				.end();
 			config.module
 				.rule('development-remove-js')
 				.test(/\.js$/)
 				.pre()
 				.exclude
-					.add(/(node_modules|bower_components|\.spec\.js)/)
-					.end()
-				.use('webpack-remove-blocks')
-					.loader('webpack-remove-blocks')
-					.options({
-						blocks: ['build', {
-                            block: 'build',
-                            start: '//'
-                        }]
-					})
+				.add(/(node_modules|bower_components|\.spec\.js)/)
 				.end()
+				.use('webpack-remove-blocks')
+				.loader('webpack-remove-blocks')
+				.options({
+					blocks: ['build', {
+						block: 'build',
+						start: '//',
+					}],
+				})
+				.end();
 		}
-	}
-}
+	},
+};
