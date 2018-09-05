@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
 	devServer: {
 		inline: true,				//实时刷新
@@ -5,10 +7,10 @@ module.exports = {
 	},
 	chainWebpack: config => {
 		config.resolve.alias
-            .set('@assets', 'src/assets')
-            .set('@components', 'src/components')
-            .set('@views', 'src/views')
-            .set('@images', 'src/images')
+            .set('@assets', path.resolve(__dirname, 'src/assets'))
+            .set('@components', path.resolve(__dirname, 'src/components'))
+            .set('@views', path.resolve(__dirname, 'src/views'))
+            .set('@images', path.resolve(__dirname, 'src/images'))
 		if (process.env.NODE_ENV === 'production') {
 			// 为生产环境修改配置...
 			config.module
