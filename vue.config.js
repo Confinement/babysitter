@@ -1,6 +1,7 @@
 module.exports = {
 	devServer: {
-		open: process.platform === 'win32' ? 'chrome' : 'google chrome',
+		inline: true,				//实时刷新
+		open: process.platform == 'win32' ? 'chrome' : 'google chrome'
 	},
 	chainWebpack: config => {
 		config.resolve.alias
