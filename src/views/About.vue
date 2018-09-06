@@ -16,8 +16,9 @@
 </template>
 <script>
 import { fetchPost } from '@/components/Fetch';
-
 export default {
+	components: {
+	},
 	data() {
 		return {
 			validateForm: {

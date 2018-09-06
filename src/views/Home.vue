@@ -1,106 +1,77 @@
 <template>
-	<!-- <mu-container> -->
-		<mu-bottom-nav class="appbar" >
-			<mu-bottom-nav-item title="home" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='home'}" :titleClass="{text_selected:this.bottomIndex=='home'}" to="/about"></mu-bottom-nav-item>
-			<mu-bottom-nav-item title="jaundice" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='jaundice'}" :titleClass="{text_selected:this.bottomIndex=='jaundice'}" to="/about"></mu-bottom-nav-item>
-			<mu-bottom-nav-item title="BBS" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='BBS'}" :titleClass="{text_selected:this.bottomIndex=='BBS'}" to="/about" ></mu-bottom-nav-item>
-			<mu-bottom-nav-item title="Learning" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='Learning'}" :titleClass="{text_selected:this.bottomIndex=='Learning'}" to="/about"></mu-bottom-nav-item>
-			<mu-bottom-nav-item title="my" icon=" " v-bind:iconClass="{selected:this.bottomIndex=='my'}" :titleClass="{text_selected:this.bottomIndex=='my'}" to="/about"></mu-bottom-nav-item>
-		</mu-bottom-nav>
-	<!-- </mu-container> -->
+	<mu-paper :z-depth="1" class="list-wrap">
+		<mu-appbar color="teal">
+			<mu-button icon slot="left">
+				<mu-icon value="menu"></mu-icon>
+			</mu-button>
+			LoadMore
+			<mu-button icon slot="right" @click="refresh()">
+				<mu-icon value="refresh"></mu-icon>
+			</mu-button>
+		</mu-appbar>
+		<mu-container ref="container" class="list-content">
+			<mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
+				<mu-list>
+					<template v-for="i in num">
+						<mu-list-item>
+							<mu-list-item-title>{{text}} Item {{i}}</mu-list-item-title>
+						</mu-list-item>
+						<mu-divider />
+					</template>
+				</mu-list>
+			</mu-load-more>
+		</mu-container>
+		<div :style="{height: 56}" />
+	</mu-paper>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
-
 export default {
-	props:['bottomIndex'],
-	name: 'home',
-	data () {
+	name: "home",
+	components: {},
+	data() {
 		return {
-			bottomValue:this.bottomIndex,
+			num: 10,
+			refreshing: false,
+			loading: false,
+			text: "List"
 		};
-  }
+	},
+	methods: {
+		refresh() {
+			this.refreshing = true;
+			this.$refs.container.scrollTop = 0;
+			setTimeout(() => {
+				this.refreshing = false;
+				this.text = this.text === "List" ? "Menu" : "List";
+				this.num = 10;
+			}, 2000);
+		},
+		load() {
+			this.loading = true;
+			setTimeout(() => {
+				this.loading = false;
+				this.num += 10;
+			}, 2000);
+		}
+	}
 };
 </script>
 <style lang="less">
-.appbar {
-  position: absolute;
-//   width: 100%;
-  bottom: 0;
-  left: 0;
+.list-wrap {
+	position: absolute;
+	width: 100%;
+	max-width: 360px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	.mu-appbar {
+		width: 100%;
+	}
 }
-
-a:nth-child(1) .mu-bottom-item-icon.selected{
-  background-image: url(../assets/home/nav_home1.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
-  a:nth-child(1) .mu-bottom-item-icon{
-  background-image: url(../assets/home/nav_home.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
-  a:nth-child(2) .mu-bottom-item-icon.selected{
-  background-image: url(../assets/home/nav_huandan.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
-  a:nth-child(2) .mu-bottom-item-icon{
-  background-image: url(../assets/home/nav_huandan.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
-  a:nth-child(3) .mu-bottom-item-icon.selected{
-  background-image: url(../assets/home/nav_circle1.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
-  a:nth-child(3) .mu-bottom-item-icon{
-  background-image: url(../assets/home/nav_circle.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
-  a:nth-child(4) .mu-bottom-item-icon.selected{
-  background-image: url(../assets/home/nav_school1.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
-  a:nth-child(4) .mu-bottom-item-icon{
-  background-image: url(../assets/home/nav_school.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
-  a:nth-child(5) .mu-bottom-item-icon.selected{
-  background-image: url(../assets/home/nav_me1.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
-  a:nth-child(5) .mu-bottom-item-icon{
-  background-image: url(../assets/home/nav_me.png) ;
-  background-repeat:no-repeat;
-  width:21px;
-  height:21px;
-  background-size:100% 100%;
-  }
- 
+.list-content {
+	flex: 1;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
 </style>
