@@ -1,4 +1,4 @@
-window.CONFIG || (window.CONFIG = {});
+window.CONFIG = window.CONFIG || {};
 
 const desiginwidth = 750;
 const platform = 5;

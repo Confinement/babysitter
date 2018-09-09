@@ -15,6 +15,7 @@
     "muse-ui": "^3.0.0",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
+    "vue-cookies": "^1.5.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
@@ -43,8 +44,7 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
-      "@vue/airbnb"
+      "plugin:vue/essential"
     ],
     "rules": {
       "indent": [
@@ -52,7 +52,7 @@
         "tab"
       ],
       "no-tabs": "off",
-      "no-console": "off"
+	  "no-console": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"

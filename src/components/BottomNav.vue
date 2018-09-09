@@ -1,25 +1,27 @@
 <template>
 	<mu-bottom-nav class="appbar" :value.sync="currentNav">
-		<mu-bottom-nav-item value="home" title="home" icon=" " to="/home" exact-active-class="selected"></mu-bottom-nav-item>
-		<mu-bottom-nav-item value="about" title="my" icon=" " to="/about" active-class="selected"></mu-bottom-nav-item>
+		<mu-bottom-nav-item value="home" title="home" icon=" " to="/home" exact-active-class="selected">
+		</mu-bottom-nav-item>
+		<mu-bottom-nav-item value="about" title="my" icon=" " to="/about" active-class="selected">
+		</mu-bottom-nav-item>
 	</mu-bottom-nav>
 </template>
 
 <script>
 export default {
-	props: ["bottomIndex"],
-	name: "BottomNav",
+	props: ['bottomIndex'],
+	name: 'BottomNav',
 	data() {
 		return {
 			// bottomIndex: '0',
-			currentNav: "aa",
-			vv: "02"
+			currentNav: 'aa',
+			vv: '02',
 		};
 	},
-	created: function() {
+	created() {
 		// this.currentNav =this.$route.path;
 		// console.log(this.currentNav)
-	}
+	},
 	// methods: {
 	// 	handleChange (val) {
 	// 		this.bottomNav = val ;// 这里的val输出是导航栏的下标

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import 'muse-ui/lib/styles/base.less';
-import { Alert,
+import {
+	Alert,
 	AppBar,
 	AutoComplete,
 	Avatar,
@@ -42,7 +43,7 @@ import { Alert,
 	Tabs,
 	TextField,
 	Tooltip,
-	theme } from 'muse-ui';
+} from 'muse-ui';
 import 'muse-ui/lib/styles/theme.less';
 import App from './App.vue';
 import router from './router';
@@ -93,7 +94,6 @@ Vue.use(Switch);
 Vue.use(Tabs);
 Vue.use(TextField);
 Vue.use(Tooltip);
-
 
 
 new Vue({

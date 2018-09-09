@@ -4,8 +4,8 @@ import { platform, version, preUrl } from '@/components/config';
 // axios.defaults.baseURL = 'https://api.example.com';
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-const _axios = (uri, data, type) => new Promise((resolve, reject) => {
-	data = data || {};
+const _axios = (uri, _data, type) => new Promise((resolve, reject) => {
+	const data = _data || {};
 	data.Platform = data.Platform || platform;
 	data.Version_Code = data.Version_Code || version;
 	// data.Token = data.Token || Cookies.get('token');
@@ -24,17 +24,15 @@ const _axios = (uri, data, type) => new Promise((resolve, reject) => {
 	}
 	axios(options)
 		.then((res) => {
-			if (res.code == '100000') {
-				if (cache) Store[uri] = res.content;
-				resolve(res.content);
-			} else if (res.code == '100001') {
-				history.push('/login');
+			// console.log(res.data)
+			if (res.data.code === '100000') {
+				// if (cache) Store[uri] = res.data.content;
+				resolve(res.data.content);
+			} else if (res.data.code === '100001') {
+				// history.push('/login');
 			} else {
 				reject(res);
 			}
-		})
-		.catch((error) => {
-		// console.log(error);
 		});
 });
 

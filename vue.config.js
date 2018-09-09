@@ -2,14 +2,14 @@ const path = require('path');
 
 module.exports = {
 	devServer: {
-		open: process.platform == 'win32' ? 'chrome' : 'google chrome'
+		open: process.platform == 'win32' ? 'chrome' : 'google chrome',
 	},
-	chainWebpack: config => {
+	chainWebpack: (config) => {
 		config.resolve.alias
-            .set('@assets', path.resolve(__dirname, 'src/assets'))
-            .set('@components', path.resolve(__dirname, 'src/components'))
-            .set('@views', path.resolve(__dirname, 'src/views'))
-            .set('@images', path.resolve(__dirname, 'src/images'))
+			.set('@assets', path.resolve(__dirname, 'src/assets'))
+			.set('@components', path.resolve(__dirname, 'src/components'))
+			.set('@views', path.resolve(__dirname, 'src/views'))
+			.set('@images', path.resolve(__dirname, 'src/images'));
 		if (process.env.NODE_ENV === 'production') {
 			// 为生产环境修改配置...
 			config.module
